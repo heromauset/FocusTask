@@ -1,15 +1,5 @@
 ﻿using GerenciadordeTarefas.Data;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using Dapper;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace GerenciadordeTarefas
 {
@@ -26,8 +16,9 @@ namespace GerenciadordeTarefas
             // Crie uma instância da segunda Form (FormNew)
             FormNew form2 = new FormNew();
 
-            // Exiba a segunda Form
+            this.Close();// Exiba a segunda Form
             form2.Show();
+            
 
         }
 
@@ -49,6 +40,7 @@ namespace GerenciadordeTarefas
             dataGridView1.Columns["DataHoraCriacao"].Visible = false;
             dataGridView1.Columns["Categoria"].Visible = false;
 
+           
         }
         private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -64,7 +56,9 @@ namespace GerenciadordeTarefas
                     formUpdate.TarefaSelecionada = tarefaSelecionada;
 
                     // Exiba o FormUpdate
-                    formUpdate.ShowDialog();
+                    this.Close();
+                    formUpdate.Show();
+                    
                 }
             }
         }

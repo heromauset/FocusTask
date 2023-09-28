@@ -1,40 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using Dapper;
-using GerenciadordeTarefas.Data;
-using System.Data.SqlClient;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿using GerenciadordeTarefas.Data;
 
 namespace GerenciadordeTarefas
 {
     public partial class FormNew : Form
     {
         public DataTask oTarefa = new DataTask();
+
         public FormNew()
         {
             InitializeComponent();
         }
+
         public void BtnInserir(object sender, EventArgs e)
         {
+            oTarefa.Nome = txtNome.Text.ToLower();
+            oTarefa.Descricao = txtDescricao.Text.ToLower();
 
+            // Determine a prioridade com base nos radio buttons selecionados
+            if (radioButtonAlta.Checked)
             {
-                oTarefa.Nome = txtNome.Text.ToLower();
-                oTarefa.Descricao = txtDescricao.Text.ToLower();
-                oTarefa.Prioridade = Convert.ToInt32(txtPrioridade.Text);
-
-                //INSTANCIANDO CLASSE DATACLIENTE
-                DataTarefa dataTarefa = new DataTarefa();
-
-                //CHAMANDO METODO INSERIR NA CLASSE DATACLIENTE
-                dataTarefa.Inserir(oTarefa);
+                oTarefa.Prioridade = 1; // Prioridade Alta
             }
+            else if (radioButtonMedia.Checked)
+            {
+                oTarefa.Prioridade = 2; // Prioridade Média
+            }
+            else if (radioButtonBaixa.Checked)
+            {
+                oTarefa.Prioridade = 3; // Prioridade Baixa
+            }
+            else
+            {
+                MessageBox.Show("Selecione uma prioridade antes de inserir a tarefa.");
+                return;
+            }
+
+            //INSTANCIANDO CLASSE DATACLIENTE
+            DataTarefa dataTarefa = new DataTarefa();
+
+
+            //CHAMANDO METODO INSERIR NA CLASSE DATACLIENTE
+            dataTarefa.Inserir(oTarefa);
+
+          this.Close(); 
+
+            FormSearch formSearch = new FormSearch();
+            formSearch.ShowDialog();
         }
 
         private void FecharTela(object sender, EventArgs e)
@@ -47,5 +58,7 @@ namespace GerenciadordeTarefas
             FormUpdate closeform = new FormUpdate();
             closeform.Close();
         }
+
+
     }
 }

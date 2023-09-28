@@ -50,6 +50,7 @@
             // button1
             // 
             button1.BackColor = Color.Teal;
+            button1.Cursor = Cursors.Hand;
             button1.ForeColor = Color.BlanchedAlmond;
             button1.Location = new Point(480, 45);
             button1.Name = "button1";
@@ -64,6 +65,7 @@
             txtBusca.BackColor = Color.White;
             txtBusca.Location = new Point(12, 101);
             txtBusca.Name = "txtBusca";
+            txtBusca.PlaceholderText = "Digite o nome da tarefa";
             txtBusca.Size = new Size(267, 23);
             txtBusca.TabIndex = 2;
             // 
@@ -91,6 +93,7 @@
             // 
             // FormSearch
             // 
+            AcceptButton = button2;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(78, 196, 245);
@@ -102,6 +105,7 @@
             Controls.Add(pictureBox1);
             Name = "FormSearch";
             Text = "FormSearch";
+            Load += btnBuscaTarefa;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

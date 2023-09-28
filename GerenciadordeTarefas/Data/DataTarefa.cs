@@ -1,16 +1,7 @@
 ﻿using Dapper;
-using GerenciadordeTarefas.Data;
-using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GerenciadordeTarefas.Data
 {
@@ -29,7 +20,7 @@ namespace GerenciadordeTarefas.Data
             sqlCMD.Parameters.AddWithValue("@Nome", tarefa.Nome);
             sqlCMD.Parameters.AddWithValue("@Descricao", tarefa.Descricao);
             sqlCMD.Parameters.AddWithValue("@Prioridade", tarefa.Prioridade);
-            sqlCMD.Parameters.AddWithValue("@DataHoraCriacao", DateTime.Now.ToString());
+            sqlCMD.Parameters.AddWithValue("@DataHoraCriacao", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"));
             //COMANDO PARA VERIFICAR SE O USUARIO EXISTE
             string strCMD = "SELECT 1 FROM Tarefas WHERE Nome = @Nome";
             sqlCMD.CommandText = strCMD;
@@ -58,7 +49,7 @@ namespace GerenciadordeTarefas.Data
                 //LOGICA PARA ALTERAR CLIENTE PERMITINDO ALTERAÇÃO DO USUARIO
 
 
-                MessageBox.Show("Tarefa atualizada");
+                
 
                 //QUANDO USUARIO EXISTE E É DO MESMO ID PODE ALTERAR...
                 //QUANDO USUARIO EXISTE E ID É DIFERENTE NÃO PODE...
@@ -79,7 +70,7 @@ namespace GerenciadordeTarefas.Data
                     sqlCMD.ExecuteNonQuery();
                     oRetorno = 2;
                 }
-             
+
 
                 else
                 {
@@ -94,7 +85,7 @@ namespace GerenciadordeTarefas.Data
                 sqlCMD.CommandText = strCMD;
                 sqlCMD.ExecuteNonQuery();
                 oRetorno = 3;
-                //MessageBox.Show("Tarefa criada");
+                MessageBox.Show("Tarefa Criada");
             }
 
             conn.Close();

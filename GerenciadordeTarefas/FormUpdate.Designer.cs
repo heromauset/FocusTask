@@ -40,16 +40,18 @@
             button3 = new Button();
             label5 = new Label();
             TextBoxDthr = new TextBox();
-            TextBoxPrio = new TextBox();
+            radioButtonAlta = new RadioButton();
+            radioButtonMedia = new RadioButton();
+            radioButtonBaixa = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
             button1.BackColor = Color.Teal;
-            button1.Location = new Point(456, 346);
+            button1.Location = new Point(456, 342);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(75, 31);
             button1.TabIndex = 23;
             button1.Text = "Excluir";
             button1.UseVisualStyleBackColor = false;
@@ -125,14 +127,13 @@
             pictureBox1.TabIndex = 24;
             pictureBox1.TabStop = false;
             pictureBox1.UseWaitCursor = true;
-            pictureBox1.Click += BTNhome_Click;
             // 
             // button2
             // 
             button2.BackColor = Color.Teal;
-            button2.Location = new Point(375, 346);
+            button2.Location = new Point(365, 342);
             button2.Name = "button2";
-            button2.Size = new Size(75, 23);
+            button2.Size = new Size(85, 31);
             button2.TabIndex = 25;
             button2.Text = "Salvar";
             button2.UseVisualStyleBackColor = false;
@@ -141,9 +142,9 @@
             // button3
             // 
             button3.BackColor = Color.Teal;
-            button3.Location = new Point(537, 346);
+            button3.Location = new Point(537, 342);
             button3.Name = "button3";
-            button3.Size = new Size(75, 23);
+            button3.Size = new Size(75, 31);
             button3.TabIndex = 26;
             button3.Text = "Concluir";
             button3.UseVisualStyleBackColor = false;
@@ -167,12 +168,38 @@
             TextBoxDthr.Size = new Size(305, 23);
             TextBoxDthr.TabIndex = 28;
             // 
-            // TextBoxPrio
+            // radioButtonAlta
             // 
-            TextBoxPrio.Location = new Point(25, 346);
-            TextBoxPrio.Name = "TextBoxPrio";
-            TextBoxPrio.Size = new Size(61, 23);
-            TextBoxPrio.TabIndex = 29;
+            radioButtonAlta.AutoSize = true;
+            radioButtonAlta.Location = new Point(25, 354);
+            radioButtonAlta.Name = "radioButtonAlta";
+            radioButtonAlta.Size = new Size(46, 19);
+            radioButtonAlta.TabIndex = 29;
+            radioButtonAlta.TabStop = true;
+            radioButtonAlta.Text = "Alta";
+            radioButtonAlta.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMedia
+            // 
+            radioButtonMedia.AutoSize = true;
+            radioButtonMedia.Location = new Point(77, 354);
+            radioButtonMedia.Name = "radioButtonMedia";
+            radioButtonMedia.Size = new Size(58, 19);
+            radioButtonMedia.TabIndex = 30;
+            radioButtonMedia.TabStop = true;
+            radioButtonMedia.Text = "Média";
+            radioButtonMedia.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonBaixa
+            // 
+            radioButtonBaixa.AutoSize = true;
+            radioButtonBaixa.Location = new Point(141, 354);
+            radioButtonBaixa.Name = "radioButtonBaixa";
+            radioButtonBaixa.Size = new Size(53, 19);
+            radioButtonBaixa.TabIndex = 31;
+            radioButtonBaixa.TabStop = true;
+            radioButtonBaixa.Text = "Baixa";
+            radioButtonBaixa.UseVisualStyleBackColor = true;
             // 
             // FormUpdate
             // 
@@ -180,7 +207,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(78, 196, 245);
             ClientSize = new Size(623, 395);
-            Controls.Add(TextBoxPrio);
+            Controls.Add(radioButtonBaixa);
+            Controls.Add(radioButtonMedia);
+            Controls.Add(radioButtonAlta);
             Controls.Add(TextBoxDthr);
             Controls.Add(label5);
             Controls.Add(button3);
@@ -215,6 +244,8 @@
         private Button button3;
         private Label label5;
         private TextBox TextBoxDthr;
-        private TextBox TextBoxPrio;
+        private RadioButton radioButtonAlta;
+        private RadioButton radioButtonMedia;
+        private RadioButton radioButtonBaixa;
     }
 }

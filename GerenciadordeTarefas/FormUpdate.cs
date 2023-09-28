@@ -1,13 +1,5 @@
 ﻿using GerenciadordeTarefas.Data;
 using System;
-using Dapper;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GerenciadordeTarefas
@@ -31,7 +23,22 @@ namespace GerenciadordeTarefas
                 // Preencha as TextBox com os dados da tarefa selecionada
                 TextBoxNome.Text = TarefaSelecionada.Nome;
                 TextBoxDescricao.Text = TarefaSelecionada.Descricao;
-                TextBoxPrio.Text = TarefaSelecionada.Prioridade.ToString();
+                int prioridade = TarefaSelecionada.Prioridade;
+
+                // Verifique a prioridade e marque o RadioButton apropriado
+                if (prioridade == 1)
+                {
+                    radioButtonAlta.Checked = true;
+                }
+                else if (prioridade == 2)
+                {
+                    radioButtonMedia.Checked = true;
+                }
+                else if (prioridade == 3)
+                {
+                    radioButtonBaixa.Checked = true;
+                }
+
                 TextBoxDthr.Text = TarefaSelecionada.DataHoraCriacao.ToString(); // Certifique-se de que isso seja formatado corretamente
             }
         }
@@ -43,7 +50,20 @@ namespace GerenciadordeTarefas
             // Lê os valores das TextBoxes e define-os na instância de DataTask
             tarefa.Nome = TextBoxNome.Text;
             tarefa.Descricao = TextBoxDescricao.Text;
-            tarefa.Prioridade = Convert.ToInt32(TextBoxPrio.Text);
+
+            // Define a prioridade com base no RadioButton selecionado
+            if (radioButtonAlta.Checked)
+            {
+                tarefa.Prioridade = 1;
+            }
+            else if (radioButtonMedia.Checked)
+            {
+                tarefa.Prioridade = 2;
+            }
+            else if (radioButtonBaixa.Checked)
+            {
+                tarefa.Prioridade = 3;
+            }
 
             // Você pode continuar lendo outros campos da mesma maneira
 
@@ -98,7 +118,12 @@ namespace GerenciadordeTarefas
                         MessageBox.Show("Erro ao criar a tarefa.");
                     }
                 }
+          
             }
+            this.Close();
+            FormSearch formSearch = new FormSearch(); 
+            formSearch.ShowDialog();
+        
         }
 
 
@@ -115,6 +140,7 @@ namespace GerenciadordeTarefas
                 if (excluiu)
                 {
                     MessageBox.Show("Tarefa excluída com sucesso");
+                    this.Close();
                 }
                 else
                 {
@@ -123,6 +149,8 @@ namespace GerenciadordeTarefas
 
                 // Fechar o FormUpdate ou realizar outras ações necessárias
                 this.Close();
+                FormSearch formSearch = new FormSearch();
+                formSearch.ShowDialog();
             }
         }
         private void buttonConcluir_Click(object sender, EventArgs e)
@@ -144,13 +172,16 @@ namespace GerenciadordeTarefas
                 {
                     MessageBox.Show("Erro ao concluir a tarefa. Verifique se a tarefa existe.");
                 }
+          
+
+           
             }
-        }
-
-
-        private void BTNhome_Click(object sender, EventArgs e)
-        {
             this.Close();
+            FormSearch formSearch = new FormSearch();
+            formSearch.ShowDialog();
+
+
         }
+
     }
 }

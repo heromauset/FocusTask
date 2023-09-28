@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 
 namespace GerenciadordeTarefas.Data
 {
     internal class ConectaBD
     {
-        string ConnctionString = @"Data Source=FAUNOPC;" +
-            "Initial Catalog=GerenciadorTarefasDB;" +
-            "User ID=admin;" +
-            "Password='10112020'";
+        string ConnctionString = @"Server=tcp:focustasks.database.windows.net,1433;Initial Catalog=gerenciadordetarefasbd;Persist Security Info=False;User ID=adm;Password=Dinossaurorex1@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         public SqlConnection SqlConn()
         {
             {
@@ -21,19 +13,18 @@ namespace GerenciadordeTarefas.Data
             }
 
         }
-            public void AbreBanco()
+        public void AbreBanco()
+        {
+            var sqlConn = SqlConn();
+            sqlConn.Open();
+            if (sqlConn.State == System.Data.ConnectionState.Closed)
             {
-                var sqlConn = SqlConn();
-                sqlConn.Open();
-                if (sqlConn.State == System.Data.ConnectionState.Closed)
-                {
 
-                }
             }
         }
-
     }
 
+}
 
 
- 
+

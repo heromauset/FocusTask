@@ -37,7 +37,9 @@
             pictureBox1 = new PictureBox();
             txtNome = new TextBox();
             txtDescricao = new TextBox();
-            txtPrioridade = new TextBox();
+            radioButtonAlta = new RadioButton();
+            radioButtonMedia = new RadioButton();
+            radioButtonBaixa = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -91,17 +93,32 @@
             resources.ApplyResources(txtDescricao, "txtDescricao");
             txtDescricao.Name = "txtDescricao";
             // 
-            // txtPrioridade
+            // radioButtonAlta
             // 
-            resources.ApplyResources(txtPrioridade, "txtPrioridade");
-            txtPrioridade.Name = "txtPrioridade";
+            resources.ApplyResources(radioButtonAlta, "radioButtonAlta");
+            radioButtonAlta.Name = "radioButtonAlta";
+            radioButtonAlta.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMedia
+            // 
+            resources.ApplyResources(radioButtonMedia, "radioButtonMedia");
+            radioButtonMedia.Name = "radioButtonMedia";
+            radioButtonMedia.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonBaixa
+            // 
+            resources.ApplyResources(radioButtonBaixa, "radioButtonBaixa");
+            radioButtonBaixa.Name = "radioButtonBaixa";
+            radioButtonBaixa.UseVisualStyleBackColor = true;
             // 
             // FormNew
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(78, 196, 245);
-            Controls.Add(txtPrioridade);
+            Controls.Add(radioButtonBaixa);
+            Controls.Add(radioButtonMedia);
+            Controls.Add(radioButtonAlta);
             Controls.Add(txtDescricao);
             Controls.Add(txtNome);
             Controls.Add(button1);
@@ -125,6 +142,8 @@
         private PictureBox pictureBox1;
         private TextBox txtNome;
         private TextBox txtDescricao;
-        private TextBox txtPrioridade;
+        private RadioButton radioButtonAlta;
+        private RadioButton radioButtonMedia;
+        private RadioButton radioButtonBaixa;
     }
 }
